@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "InEvent Badge Printer",
+  "version": "1.3",
+  "description": "InEvent connector tool to print to WiFi Zebra and Brother printers.",
+  "icons": {
+    "128": "icon128.png"
+  },
+  "author": "InEvent",
+  "optional_host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {},
+  "content_scripts": [
+    {
+      "matches": [
+        "http://inevent.localhost/*",
+        "http://app.inevent.localhost/*",
+        "http://inevent.localhost:8888/*",
+        "http://app.inevent.localhost:8888/*",
+        "https://inevent.com/*",
+        "https://app.inevent.com/*",
+        "https://inevent.uk/*",
+        "https://app.inevent.uk/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}
